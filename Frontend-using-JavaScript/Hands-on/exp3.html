@@ -1,0 +1,168 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8"> 
+<title>Lab 3 - Spice Garden Restaurant</title> 
+<style> 
+  * { box-sizing: border-box; } 
+  body { 
+    font-family: 'Georgia', serif; 
+    margin: 0; 
+    background: #fdfaf5; 
+  } 
+  header { 
+    background: linear-gradient(135deg, #8e2de2, #c0392b); 
+    color: white; 
+    text-align: center; 
+    padding: 50px 20px; 
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.4); 
+  } 
+  header h1 { 
+    margin: 0; 
+    font-size: 42px; 
+    letter-spacing: 2px; 
+  } 
+  header p { 
+    font-style: italic; 
+    margin-top: 8px; 
+  } 
+  nav { 
+    background: #2c3e50; 
+    display: flex; 
+    justify-content: end; 
+    gap: 30px; 
+    padding: 12px; 
+  } 
+  nav a { 
+    color: white; 
+    text-decoration: none; 
+    font-weight: bold; 
+    transition: color 0.3s ease; 
+  }
+   
+  nav a:hover { 
+    color: #f1c40f; 
+  } 
+  .menu { 
+    display: grid; 
+    grid-template-columns: repeat(1, 1fr); 
+    gap: 20px; 
+    padding: 40px; 
+  } 
+  .dish { 
+    background: white; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12); 
+    padding: 20px; 
+    text-align: center; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+  } 
+  .dish:hover { 
+    transform: translateY(-8px) scale(1.03); 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2); 
+  } 
+  .dish .icon { 
+    font-size: 48px; 
+  } 
+  .dish h3 { 
+    color: #c0392b; 
+    margin: 10px 0 5px; 
+  } 
+  .price { 
+    font-weight: bold; 
+    color: #27ae60; 
+  } 
+  .cta { 
+    text-align: center; 
+    padding: 30px; 
+  } 
+  .btn { 
+    background: #c0392b; 
+    color: white; 
+    padding: 14px 34px; 
+    border: none; 
+    border-radius: 30px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    box-shadow: 0 4px 12px rgba(192,57,43,0.4); 
+    animation: pulse 2s infinite; 
+  } 
+  @keyframes pulse { 
+    0% { box-shadow: 0 0 0 0 rgba(192,57,43,0.5); } 
+    70% { box-shadow: 0 0 0 15px rgba(192,57,43,0); } 
+    100% { box-shadow: 0 0 0 0 rgba(192,57,43,0); } 
+  } 
+  footer { 
+    background: #2c3e50; 
+    color: #bdc3c7; 
+    text-align: center; 
+    padding: 15px; 
+    font-size: 14px; 
+  } 
+</style> 
+</head> 
+<body> 
+  <header> 
+    <h1>Spice Garden</h1> 
+    <p>Authentic Flavours, Modern Ambience</p> 
+  </header> 
+  <nav>  
+    <a href="#">Home</a> 
+    <a href="#">Menu</a> 
+    <a href="#">About</a> 
+    <a href="#">Reservations</a> 
+    <a href="#">Contact</a> 
+  </nav> 
+  
+  <section class="menu"> 
+    <div class="dish"> 
+      <div class="icon">                  </div> 
+      <h3>Paneer Butter Masala</h3> 
+      <p>Rich and creamy North Indian curry.</p> 
+      <p class="price">₹220</p> 
+    </div> 
+    <div class="dish"> 
+      <div class="icon">       </div> 
+      <h3>Hakka Noodles</h3> 
+      <p>Wok-tossed noodles with veggies.</p> 
+      <p class="price">₹180</p> 
+    </div> 
+    <div class="dish"> 
+      <div class="icon">     </div> 
+      <h3>Farmhouse Pizza</h3> 
+      <p>Loaded with fresh garden vegetables.</p> 
+      <p class="price">₹250</p> 
+    </div> 
+    <div class="dish"> 
+      <div class="icon">     </div> 
+      <h3>Farmhouse Pizza</h3> 
+      <p>Loaded with fresh garden vegetables.</p> 
+      <p class="price">₹250</p> 
+    </div> 
+    <div class="dish"> 
+      <div class="icon">     </div> 
+      <h3>Farmhouse Pizza</h3> 
+      <p>Loaded with fresh garden vegetables.</p> 
+      <p class="price">₹250</p> 
+    </div> 
+    <div class="dish"> 
+      <div class="icon">     </div> 
+      <h3>Farmhouse Pizza</h3> 
+      <p>Loaded with fresh garden vegetables.</p> 
+      <p class="price">₹250</p> 
+    </div> 
+    <div class="dish"> 
+      <div class="icon">     </div> 
+      <h3>Farmhouse Pizza</h3> 
+      <p>Loaded with fresh garden vegetables.</p> 
+      <p class="price">₹250</p> 
+    </div> 
+  </section> 
+  
+  <div class="cta"> 
+    <button class="btn">Book a Table</button> 
+  </div> 
+  
+  <footer>&copy; 2026 Spice Garden Restaurant. All rights reserved.</footer> 
+</body> 
+</html> 
