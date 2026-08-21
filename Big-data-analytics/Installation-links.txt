@@ -1,0 +1,12 @@
+Cloudera:
+
+https://gist.github.com/robinson/79bc8c6ee077fba0f6f265a1c6fac2f6
+
+
+7-zip:
+https://www.7-zip.org/download.html
+
+
+VirtualBox:
+
+https://www.virtualbox.org/wiki/Download_Old_Builds
