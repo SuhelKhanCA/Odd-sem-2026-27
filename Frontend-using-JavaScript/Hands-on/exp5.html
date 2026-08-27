@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lab 5 - JavaScript Exercises & Canvas Drawing App</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f4f6f8;
+        padding: 25px;
+        margin: 0;
+      }
+      h1 {
+        color: #2c3e50;
+      }
+      section {
+        background: white;
+        padding: 18px 22px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      }
+      h2 {
+        color: #2980b9;
+        margin-top: 0;
+      }
+      button {
+        background: #2980b9;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 8px;
+      }
+
+      #result{
+        font-weight: bold;
+        margin-top: 8px;
+        color: #27ae60;
+      }
+      canvas {
+        border: 2px solid #34495e;
+        background: white;
+        cursor: crosshair;
+        display: block;
+        margin-top: 10px;
+      }
+      .toolbar {
+        margin-bottom: 8px;
+      }
+      .toolbar input[type="color"] {
+        width: 40px;
+        height: 30px;
+        vertical-align: middle;
+      }
+      .toolbar input[type="range"] {
+        vertical-align: middle;
+      }
+    </style>
+  </head>
+  <body>
+    
+    <section>
+      <h2>Canvas Drawing Application</h2>
+      <div class="toolbar">
+        Color: <input type="color" id="colorPicker" value="#e74c3c" /> Brush
+        Size: <input type="range" id="brushSize" min="1" max="20" value="4" />
+        <button onclick="clearCanvas()">Clear</button>
+      </div>
+      <canvas id="drawCanvas" width="500" height="300"></canvas>
+    </section>
+
+    <script>
+
+      // Canvas Drawing App
+      const canvas = document.getElementById("drawCanvas");
+      const ctx = canvas.getContext("2d");
+      let drawing = false;
+
+      canvas.addEventListener("mousedown", (e) => {
+        drawing = true;
+        ctx.beginPath();
+        ctx.moveTo(e.offsetX, e.offsetY);
+      });
+      canvas.addEventListener("mousemove", (e) => {
+        if (!drawing) return;
+        ctx.lineWidth = document.getElementById("brushSize").value;
+        ctx.lineCap = "round";
+        ctx.strokeStyle = document.getElementById("colorPicker").value;
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.stroke();
+      });
+      window.addEventListener("mouseup", () => (drawing = false));
+
+      function clearCanvas() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    </script>
+  </body>
+</html>
