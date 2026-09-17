@@ -1,0 +1,5 @@
+1. Install WSl and Ubuntu Distro
+2. Install Hadoop with Medium blog
+3. Follow sheet Exp-3-Setup-wsl
+4. Use sheet for exp 3
+5. Use "Step-2-RUNNING JAR FILE IN WSL" sheet to run the jar file
