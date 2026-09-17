@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lab 6 - JavaScript Form Validation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #eef2f5;
+        display: flex;
+        justify-content: center;
+        padding: 30px;
+        margin: 0;
+      }
+      form {
+        background: white;
+        width: 480px;
+        padding: 25px 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+        text-align: center;
+        color: #2c3e50;
+        margin-top: 0;
+      }
+      label {
+        display: block;
+        margin-top: 14px;
+        margin-bottom: 4px;
+        font-weight: bold;
+        color: #34495e;
+      }
+      input {
+        width: 100%;
+        padding: 8px 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+      }
+      input.invalid {
+        border-color: #e74c3c;
+        background: #fdecea;
+      }
+      .error {
+        color: #e74c3c;
+        font-size: 12px;
+        margin-top: 3px;
+        min-height: 14px;
+      }
+      button {
+        margin-top: 20px;
+        width: 100%;
+        background: #2980b9;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      #statusMsg {
+        text-align: center;
+        margin-top: 12px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="validationForm" onsubmit="return validateForm();">
+      <h2>Form Validation Exercise</h2>
+
+      <label for="name">Full Name</label>
+      <input type="text" id="name" value="R" />
+      <div class="error" id="nameError"></div>
+
+      <label for="email">Email Address</label>
+      <input type="text" id="email" value="rohan@com" />
+      <div class="error" id="emailError"></div>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" value="123" />
+      <div class="error" id="passwordError"></div>
+
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" id="confirmPassword" value="1234" />
+      <div class="error" id="confirmError"></div>
+
+      <label for="phone">Phone Number</label>
+      <input type="text" id="phone" value="98765abc10" />
+      <div class="error" id="phoneError"></div>
+
+      <button type="submit">Submit</button>
+      <div id="statusMsg"></div>
+    </form>
+
+    <script>
+      function showError(fieldId, errorId, message) {
+        document.getElementById(errorId).innerText = message;
+        document
+          .getElementById(fieldId)
+          .classList.toggle("invalid", message !== "");
+      }
+      function validateForm() {
+        let isValid = true;
+
+        // Name validation: at least 3 characters, letters/spaces only
+        const name = document.getElementById("name").value.trim();
+        if (name.length < 3 || !/^[A-Za-z ]+$/.test(name)) {
+          showError(
+            "name",
+            "nameError",
+            "Name must be at least 3 letters (no numbers/symbols).",
+          );
+          isValid = false;
+        } else {
+          showError("name", "nameError", "");
+        }
+
+        // Email validation using regex
+        const email = document.getElementById("email").value.trim();
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+          showError(
+            "email",
+            "emailError",
+            "Enter a valid email address (e.g. name@domain.com).",
+          );
+          isValid = false;
+        } else {
+          showError("email", "emailError", "");
+        }
+
+        // Password validation: min 6 characters
+        const password = document.getElementById("password").value;
+        if (password.length < 6) {
+          showError(
+            "password",
+            "passwordError",
+            "Password must be at least 6 characters long.",
+          );
+          isValid = false;
+        } else {
+          showError("password", "passwordError", "");
+        }
+
+        // Confirm password must match
+        const confirmPassword =
+          document.getElementById("confirmPassword").value;
+        if (confirmPassword !== password) {
+          showError(
+            "confirmPassword",
+            "confirmError",
+            "Passwords do not match.",
+          );
+          isValid = false;
+        } else {
+          showError("confirmPassword", "confirmError", "");
+        }
+
+        // Phone validation: exactly 10 digits
+        const phone = document.getElementById("phone").value.trim();
+        if (!/^\d{10}$/.test(phone)) {
+          showError(
+            "phone",
+            "phoneError",
+            "Phone number must contain exactly 10 digits.",
+          );
+          isValid = false;
+        } else {
+          showError("phone", "phoneError", "");
+        }
+
+        const status = document.getElementById("statusMsg");
+        if (isValid) {
+          status.style.color = "#27ae60";
+          status.innerText = "Form submitted successfully!";
+        } else {
+          status.style.color = "#e74c3c";
+          status.innerText = "Please fix the highlighted errors.";
+        }
+        return false; // prevent actual submission for demo
+      }
+
+    </script>
+  </body>
+</html>

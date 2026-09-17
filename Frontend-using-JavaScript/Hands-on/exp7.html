@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lab 7 - Student Registration Form</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #eef2f5;
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        padding: 30px;
+        margin: 0;
+        flex-wrap: wrap;
+      }
+      form {
+        background: white;
+        width: 420px;
+        padding: 25px 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+        text-align: center;
+        color: #2c3e50;
+        margin-top: 0;
+      }
+      label {
+        display: block;
+        margin-top: 14px;
+        margin-bottom: 6px;
+        font-weight: bold;
+        color: #34495e;
+      }
+      input,
+      select {
+        width: 100%;
+        padding: 8px 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+      }
+      button {
+        margin-top: 20px;
+        width: 100%;
+        background: #27ae60;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      #ageDisplay {
+        font-size: 12px;
+        color: #2980b9;
+        margin-top: 4px;
+      }
+      #summaryCard {
+        background: white;
+        width: 320px;
+        padding: 20px 25px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-top: 5px solid #27ae60;
+      }
+      #summaryCard h3 {
+        color: #27ae60;
+        margin-top: 0;
+      }
+      #summaryCard table td {
+        padding: 5px 0;
+        vertical-align: top;
+      }
+      #summaryCard table td.label {
+        font-weight: bold;
+        color: #34495e;
+        width: 90px;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="regForm" onsubmit="return registerStudent();">
+      <h2>Student Registration Form</h2>
+
+      <label for="sname">Student Name</label>
+      <input type="text" id="sname" name="sname" value="Ananya Verma" />
+
+      <label for="dob">Date of Birth</label>
+      <input
+        type="date"
+        id="dob"
+        value="2006-08-15"
+        onchange="calculateAge()"
+      />
+      <div id="ageDisplay"></div>
+
+      <label for="course">Course</label>
+      <select id="course" onchange="populateBranches()">
+        <option value="BE">B.E.</option>
+        <option value="BCA">BCA</option>
+        <option value="MBA">MBA</option>
+      </select>
+
+      <label for="branch">Branch / Specialization</label>
+      <select id="branch"></select>
+
+      <label for="semail">Email Address</label>
+      <input type="email" id="semail" value="ananya.verma@example.com" />
+
+      <button type="submit">Register</button>
+    </form>
+
+    <div id="summaryCard" style="display: none">
+      <h3>Registration Summary</h3>
+      <table>
+        <tr>
+          <td class="label">Name</td>
+          <td id="sumName"></td>
+        </tr>
+        <tr>
+          <td class="label">Age</td>
+          <td id="sumAge"></td>
+        </tr>
+        <tr>
+          <td class="label">Course</td>
+          <td id="sumCourse"></td>
+        </tr>
+        <tr>
+          <td class="label">Branch</td>
+          <td id="sumBranch"></td>
+        </tr>
+        <tr>
+          <td class="label">Email</td>
+          <td id="sumEmail"></td>
+        </tr>
+      </table>
+    </div>
+
+    <script>
+      const branchMap = {
+        BE: ["Computer Science", "Electronics", "Mechanical", "Civil"],
+        BCA: ["General", "Data Science"],
+        MBA: ["Finance", "Marketing", "HR"],
+      };
+
+      function populateBranches() {
+        const course = document.getElementById("course").value;
+        const branchSelect = document.getElementById("branch");
+        branchSelect.innerHTML = "";
+
+        branchMap[course].forEach((b) => {
+          const opt = document.createElement("option");
+          opt.value = b;
+          opt.text = b;
+          branchSelect.appendChild(opt);
+        });
+      }
+
+      function calculateAge() {
+        const dob = new Date(document.getElementById("dob").value); // 09-09-2001 // 12-12-2001
+        const today = new Date(); // 10-09-2026
+        let age = today.getFullYear() - dob.getFullYear(); // 25
+        const m = today.getMonth() - dob.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) age--;
+        document.getElementById("ageDisplay").innerText =
+          "Calculated Age: " + age + " years";
+        return age;
+      }
+
+      function registerStudent() {
+        const name = document.getElementById("sname").value;
+        const age = calculateAge();
+        const course = document.getElementById("course").value;
+        const branch = document.getElementById("branch").value;
+        const email = document.getElementById("semail").value;
+
+        document.getElementById("sumName").innerText = name;
+        document.getElementById("sumAge").innerText = age + " years";
+        document.getElementById("sumCourse").innerText = course;
+        document.getElementById("sumBranch").innerText = branch;
+        document.getElementById("sumEmail").innerText = email;
+        document.getElementById("summaryCard").style.display = "block";
+        return false; 
+      }
+
+      // Initialize on load 
+      window.onload = function () {
+        populateBranches();
+        calculateAge();
+        registerStudent();
+      };
+    </script>
+  </body>
+</html>
