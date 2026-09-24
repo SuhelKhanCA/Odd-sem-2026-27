@@ -1,0 +1,39 @@
+{% extends "layout.html" %} {% block title %}Home - MyCompany{% endblock %} {%
+block nav_home %}active{% endblock %} {% block content %}
+<h1>Welcome to MyCompany</h1>
+<p>
+  We build reliable, modern web solutions for businesses of every size. Our team
+  combines design, engineering, and strategy to deliver products that our
+  clients are proud of.
+</p>
+<div style="display: flex; gap: 15px; margin-top: 20px">
+  <div
+    style="
+      flex: 1;
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    "
+  >
+    <h3 style="color: #2980b9; margin-top: 0">Our Mission</h3>
+    <p style="font-size: 14px">
+      To deliver technology solutions that make a real difference.
+    </p>
+  </div>
+  <div
+    style="
+      flex: 1;
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    "
+  >
+    <h3 style="color: #2980b9; margin-top: 0">Our Vision</h3>
+    <p style="font-size: 14px">
+      To be a trusted technology partner for organisations worldwide.
+    </p>
+  </div>
+</div>
+{% endblock %}

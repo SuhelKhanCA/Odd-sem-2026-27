@@ -1,0 +1,57 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8"> 
+<title>Fruits & Selected Students</title> 
+<style> 
+  body { 
+    font-family: Arial, sans-serif; 
+    background: #eef2f5; 
+    display: flex; 
+    justify-content: center; 
+    padding: 30px; 
+    margin: 0; 
+  } 
+  .container { 
+    background: white; 
+    width: 480px; 
+    padding: 25px 30px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+  } 
+  h1 { color: #2c3e50; text-align: center; font-size: 22px; margin-top: 0; } 
+  h2 { color: #2980b9; border-bottom: 2px solid #2980b9; padding-bottom: 5px; font-size: 18px; } 
+  ul, ol { padding-left: 22px; } 
+  ul li, ol li { margin-bottom: 6px; } 
+  .event-banner { 
+    background: #2c3e50; 
+    color: white; 
+    text-align: center; 
+    padding: 8px; 
+    border-radius: 5px; 
+    margin-bottom: 20px; 
+    font-weight: bold; 
+  } 
+</style> 
+</head> 
+<body> 
+  <div class="container"> 
+    <h1>Django Template Demo</h1> 
+    <div class="event-banner">{{ event_name }}</div> 
+  
+    <h2>Fruits Available (Unordered List)</h2> 
+    <ul> 
+      {% for fruit in fruits %} 
+        <li>{{ fruit }}</li> 
+      {% endfor %} 
+    </ul> 
+  
+    <h2>Students Selected for the Event (Ordered List)</h2> 
+    <ol> 
+      {% for student in selected_students %} 
+        <li>{{ student }}</li> 
+      {% endfor %} 
+    </ol> 
+  </div> 
+</body> 
+</html>
