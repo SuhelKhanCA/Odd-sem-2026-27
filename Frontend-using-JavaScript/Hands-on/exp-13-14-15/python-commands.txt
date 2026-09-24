@@ -1,0 +1,13 @@
+$ python -m venv .venv
+
+$ .\.venv\Scripts\activate
+
+$ pip install django
+
+1. django-admin startproject exp13
+
+// after setting everything
+
+2. cd exp13
+
+3. python manage.py runserver
