@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to jQuery</title>
+    <!-- jQuery Library via CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- jQuery Validation Plugin CDN -->
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 0;
+        }
+        .emphasize {
+            font-style: italic;
+            color: red;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #more {
+            display: none;
+            padding: 10px;
+            background-color: #f0f0f0;
+            margin-top: 10px;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Interactive Show/Hide Example -->
+    <div class="section">
+        <h2>jQuery Show/Hide Toggle Example</h2>
+        <a href="#">Click here to toggle visibility of #more</a>
+        <div id="more">
+            <p class="emphasize">This is the hidden content being toggled using jQuery!</p>
+        </div>
+    </div>
+
+    <script>
+
+         // Traditional JavaScript Show/Hide Toggle (Old Way)
+
+        // function toggle_visibility(id) {
+        //     var e = document.getElementById(id);
+        //     if(e.style.display == 'block')
+        //         e.style.display = 'none';
+        //     else
+        //         e.style.display = 'block';
+        // }
+        // onclick = function() {
+        //     toggle_visibility('more');
+        // };
+
+        // jQuery Show/Hide Effect
+        $(document).ready(function(){
+            $("a").click(function(){
+                $("#more").toggle("slow");
+                return false;
+            });
+        });
+    </script>
+</body>
+</html>
